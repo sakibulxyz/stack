@@ -5,22 +5,22 @@ import (
 )
 
 type Stack[T any] struct {
-	push  func(T)
-	pop   func() T
-	peek  func() T
-	retrn func() []T
-	print func()
+	Push  func(T)
+	Pop   func() T
+	Peek  func() T
+	Retrn func() []T
+	Print func()
 }
 
 func NewStack[T any]() stack[T] {
 	var s stack[T]
 	var st []T
 
-	s.push = func(i T) {
+	s.Push = func(i T) {
 		st = append(st, i)
 	}
 
-	s.pop = func() T {
+	s.Pop = func() T {
 		var val T
 
 		slen := len(st)
@@ -34,11 +34,11 @@ func NewStack[T any]() stack[T] {
 		return val
 	}
 
-	s.print = func() {
+	s.Print = func() {
 		fmt.Println(st)
 	}
 
-	s.peek = func() T {
+	s.Peek = func() T {
 		if len(st) > 0 {
 			return st[len(st)-1]
 		}
@@ -47,7 +47,7 @@ func NewStack[T any]() stack[T] {
 		return t
 	}
 
-	s.retrn = func() []T {
+	s.Retrn = func() []T {
 		return st
 	}
 
